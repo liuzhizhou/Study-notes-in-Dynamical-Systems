@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.141592653-2.6-0.999993 (TeX Live 2021) (preloaded format=xelatex 2021.8.25)  3 JUN 2022 13:31
+This is XeTeX, Version 3.141592653-2.6-0.999993 (TeX Live 2021) (preloaded format=xelatex 2021.8.25)  3 JUN 2022 23:01
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -984,10 +984,9 @@ sy/m/n/12 ^^T
  []
 
 [9] [10] [11] [12] [13] [14] [15] [16] [17] [18] [19] [20] [21] [22] [23]
-[24] [25] [26] [27] [28] (./Basic concepts with proofs in DS.bbl
+[24] [25] [26] [27] [28] [29] [30] [31] (./Basic concepts with proofs in DS.bbl
 LaTeX Font Info:    Trying to load font information for T1+txtt on input line 1
 9.
-
 (/usr/local/texlive/2021/texmf-dist/tex/latex/txfonts/t1txtt.fd
 File: t1txtt.fd 2000/12/15 v3.1
 )
@@ -996,18 +995,18 @@ Underfull \hbox (badness 10000) in paragraph at lines 16--22
  & oldid = 1086512997$[][]\T1/txr/m/n/12 ,
  []
 
-) [29] (./Basic concepts with proofs in DS.aux)
+) [32] (./Basic concepts with proofs in DS.aux)
 Package rerunfilecheck Info: File `"Basic concepts with proofs in DS".out' has 
 not changed.
 (rerunfilecheck)             Checksum: <no file>.
  ) 
 Here is how much of TeX's memory you used:
- 25393 strings out of 476919
- 490799 string characters out of 5821840
- 782273 words of memory out of 5000000
- 44950 multiletter control sequences out of 15000+600000
+ 25400 strings out of 476919
+ 490897 string characters out of 5821840
+ 782020 words of memory out of 5000000
+ 44957 multiletter control sequences out of 15000+600000
  454405 words of font info for 118 fonts, out of 8000000 for 9000
  1348 hyphenation exceptions out of 8191
  112i,16n,116p,1232b,1228s stack positions out of 5000i,500n,10000p,200000b,80000s
 
-Output written on Basic concepts with proofs in DS.pdf (29 pages).
+Output written on Basic concepts with proofs in DS.pdf (32 pages).

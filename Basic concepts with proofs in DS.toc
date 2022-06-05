@@ -11,3 +11,4 @@
 \contentsline {subsection}{\numberline {2.5}Ergodicity and Mixing}{23}{subsection.2.5}%
 \contentsline {subsection}{\numberline {2.6}Examples of Ergodicity and Mixing}{27}{subsection.2.6}%
 \contentsline {subsection}{\numberline {2.7}Important Ergodic Theorems}{28}{subsection.2.7}%
+\contentsline {subsection}{\numberline {2.8}Invariant Measure for Continuous Map}{31}{subsection.2.8}%

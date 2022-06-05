@@ -30,7 +30,7 @@
 	{Definition}% title
 	{%
 		breakable,
-		colback=Emerald!10,
+		colback=white,
 		colframe=cyan!40!black,
 		fonttitle=\bfseries,
 	}% options
@@ -42,7 +42,7 @@
 	{Theorem}% title
 	{%
 		breakable,
-		colback=Salmon!20, 
+		colback=white, 
 		colframe=Salmon!90!Black,
 		fonttitle=\bfseries,
 	}% options
@@ -54,7 +54,7 @@
 {Proposition}% title
 {%
 	breakable,
-	colback=OliveGreen!10,
+	colback=white,
 	colframe=Green!70,
 	fonttitle=\bfseries,
 }% options
@@ -66,7 +66,7 @@
 {Example}% title
 {%
 	breakable,
-	colback=green!5,
+	colback=white,
 	colframe=green!35!black,
 	fonttitle=\bfseries,
 }% options
@@ -79,7 +79,7 @@
 {Lemma}% title
 {%
 	breakable,
-	colback=SeaGreen!10!CornflowerBlue!10,
+	colback=white,
 	colframe=RoyalPurple!55!Aquamarine!100!
 	fonttitle=\bfseries,
 }% options
@@ -92,7 +92,7 @@
 {Corollary}% title
 {%
 	breakable,
-	colback=JungleGreen!10!Cerulean!15,
+	colback=white,
 	colframe=CornflowerBlue!60!Black,
 	fonttitle=\bfseries,
 }% options
@@ -706,7 +706,7 @@
 		$$
 		\mu\left(\bigcup_{n\in \N} A_n\right) = \sum_{n\in\N} \mu(A_n),
 		$$
-		for any $A_n\in \frakA$.
+		for any disjoint $A_n\in \frakA$.
 	\end{definition}
 	
 	\begin{proposition}{}{}
@@ -1236,11 +1236,147 @@
 		\int_X \bar{f}(x)d\mu=\int_X f(x)d\mu.
 		$$
 	\end{theorem}
-	Also, if $T$ is furthermore assumed to be ergodic, then $\bar{f}(x)$ is constant$\mod 0$. As a consequence, for every $f\in L^1(X,\frakA,\mu)$, $\int_X f(x)d\mu$ equals that constant times $\mu(X)$.
+	Also, if $T$ is furthermore assumed to be ergodic, we have the following corollary.
+	\begin{corollary}{}{}
+		A measure-preserving transformation $T$ is a finite measure space $(X,\frakA,\mu)$ is ergodic if and only if for each $f\in L^1(X,\frakA,\mu)$
+		$$
+		\lim_{n\to\infty}\frac{1}{n}\sum_{i=0}^{n-1} f(T^i(x))=\frac{1}{\mu(X)}\int_X f(x)d\mu \quad a.e.x,
+		$$
+		i.e., if and only if the time average equals the space average for every $L^1$ function.
+	\end{corollary}
+	\begin{proof}
+		If $T$ is ergodic, then  then $\bar{f}(x)$ is constant$\mod 0$. As a consequence, for every $f\in L^1(X,\frakA,\mu)$, 
+		$$
+		\lim_{n\to\infty}\frac{1}{n}\sum_{k=0}^{n-1}f(T^k(x))=\bar{f}(x)=\frac{1}{\mu(X)}\cdot \int_X f(x)d\mu \quad a.e. x.
+		$$
+		
+		Conversely, assume $f$ is an invariant function, then
+		$$
+		f(x)=\lim_{n\to\infty}\frac{1}{n}\sum_{i=0}^{n-1} f(T^i(x))=\frac{1}{\mu(X)}\int_X f(x)d\mu \quad a.e.x
+		$$
+		which shows $f(x)$ is constant a.e. x. Then $T$ is ergodic.
+	\end{proof}
+	
+	
+	\begin{corollary}{}{}
+		A measure-preserving transformation $T$ of a finite measure space $(X,\frakA,\mu)$ is ergodic if and only if for every $A\in \frakA$, for a.e. $x\in X$,
+		$$
+		\lim_{n\to \infty}\frac{1}{n}\sum_{k=0}^{n-1}\one_A (T^k(x))=\frac{\mu(A)}{\mu(X)}.
+		$$
+	\end{corollary}
+	\begin{proof}
+		If $T$ is ergodic, take $f=\one_A$ in the previous corollary, then the proof is complete. For the converse, assume $A$ is $T$-invariant, multiply both sides by $\one_A$, and note that $\one_A(T^k(x))\cdot \one_A=\one_{T^{-k}(A)\cap A}$, then integral on both sides, applying dominate convergent theorem, we obtain
+		$$
+		\mu(A)=\lim_{n\to\infty}\frac{1}{n}\sum_{k=0}^{n-1}\mu(T^{-k}(A)\cap A)=\frac{\mu(A)^2}{\mu(X)}
+		$$
+		implies $\mu(A)=0$ or 1.
+	\end{proof}
+	\begin{corollary}{}{}
+		Let $T$ be a measure-preserving transformation of a probability measure space $(X,\frakA,\mu)$. Prove that $T$  is ergodic if and only if
+		$$
+		\lim_{n\to\infty}\frac{1}{n} \sum_{k=0}^{n-1}\mu(T^{-k}(A)\cap B)=\mu(A)\cdot \mu(B)
+		$$
+		for any $A,B\in \frakA$.
+	\end{corollary}
+	\begin{proof}
+		For one side,assume $A,B\in \frakA$, and set $f(x)=\one_A$, then $\bar{f}=\frac{\mu(A)}{\mu(X)}=\mu(A)$ a.e. $x$. By Birkhoff's Ergodic Theorem, we have
+		$$
+		\frac{1}{n}\sum_{k=0}^{n-1}\one_A (T^k(x))\to m(A).
+		$$
+		Multiply both sides by $\one_B$ and note that $\one_A(T^k(x))\cdot \one_B=\one_{T^{-k}(A)\cap B}$. The latter is because $\one_A(T^k(x))\cdot \one_B=1$ if and only if $T^k(x)\in A$ and $x\in B$ if and only if $x\in T^{-k}(A)\cap B$ if and only if $\one_{T^{-k}(A)\cap B}=1$. Therefore we obtain
+		$$
+		\frac{1}{n}\sum_{k=0}^{n-1}\one_{T^{-k}(A)\cap B}\to \mu(A)\one_B.
+		$$
+		Integral both sides over $X$, by the dominated convergence theorem, we have
+		$$
+		\frac{1}{n}\sum_{k=0}^{n-1}\mu(T^{-k}(A)\cap B)\to \mu(A)\cdot \mu(B).
+		$$
+		
+		Conversely, let $A=B$ and assume $A$ is $T$-invariant, we have
+		$$
+		\frac{1}{n}\sum_{k=0}^{n-1}\mu(A)=\mu(A)\to \mu(A)^2.
+		$$
+		Therefore we must have $m(A)=0$ or $1$, namely $T$ is ergodic.
+	\end{proof}
+	
+	\subsection{Invariant Measure for Continuous Map}
+	Assume in this section that $X$ is a compact metric space, then all continuous function are integrable.
+	\begin{theorem}{Krylov-Bogolubov}{}
+		Let $X$ be a compact metric space and $T:X\to X$ a continuous map. Then there is a $T$-invariant Borel probability measure $\mu$ on $X$.
+	\end{theorem}
+	\begin{proof}
+		We have proved in class that $\int \phi\circ Td\mu=\int \phi d\mu$ for all $\phi\in C^0(X)$. Then set $\phi=\one_A$ a.e. and note that $\one_A\circ T=\one_{T^{-1}(A)}$, we obtain $\mu(T^{-1}(A))=\mu(A)$.
+	\end{proof}
 	
 	
 	
 	
+	
+	\newcommand{\M}{\mathcal{M}}
+	
+	\begin{definition}{convergent in weak* topology}{}
+		Let $\M=\M(X)$ denote the set of all Borel probability measures on $X$. A sequence of measures $\mu_n\in\M$ converges in the weak* topology to a measure $\mu\in \M$ if $\int_X fd\mu_n\to \int_X f d\mu$ for every $f\in C(X)$.
+	\end{definition}
+
+	\begin{proposition}{}{}
+		$\M$ is a compact metric space.
+	\end{proposition}
+	\begin{proof}
+		Assume $\mathcal{F}=\{\phi_0,\phi_1,\dots\}$ be a dense set of $C^0(X)$. The metric in $\M$ is defined as following. For any $\mu,\nu\in \M$,
+		$$
+		d(\mu,\nu)=\sum_{n=0}^\infty \frac{\left|\int \phi_n d\mu-\int \phi_n d\nu\right|}{2^n}.
+		$$ 
+		This is indeed a measure. It is clear that $d(\mu,\nu)=d(\nu,\mu)$ and $d(\mu,\nu)\geq 0$. If $d(\mu,\nu)=0$, then we have $\int \phi_n d\mu=\int \phi_nd\nu$ for all $\phi_n$. Combined with $\mathcal{F}$ is dense, we have $\mu(A)=\int \one_A d\mu=\int \one_A \nu=\nu(A)$, for every $A$, i.e. $\mu=\nu$. Also note that for $\mu,\nu,\pi\in \M$,
+		$$
+		\left|\int \phi_nd\mu-\int \phi_n d\pi\right|\geq \left| \int \phi_nd\mu-\int \phi_n d\nu\right|+ 	\left|\int \phi_nd\nu-\int \phi_n d\pi\right|
+		$$ 
+		we then have $d(\mu,\pi)\geq d(\mu,\nu)+d(\nu,\pi)$.
+		Then apply diagonal method.
+	\end{proof}
+	
+	\begin{proposition}{}{}
+		$\M$ is a convex set.
+	\end{proposition}
+	\begin{proof}
+		We need to check that for any $\mu,\nu\in\M$, we have $\pi=t\mu+(1-t)\nu\in \M$ for any $t\in [0,1]$. For any set $A\in \frakA$, $\pi(A)=t\mu(A)+(1-t)\nu(A)\geq 0$. Also if $\{A_n\}_{n\in\N}$ is a series of disjoint sets, then
+		$$
+		\pi\left(\bigcup_{n\in\N}A_n\right)=t\mu\left(\bigcup_{n\in\N}A_n\right)+(1-t)\left(\bigcup_{n\in\N}A_n\right)=\sum_{n\in \N}[t\mu+(1-t)\nu](A_n)=\sum_{n\in \N}\pi(A).
+		$$
+		And also $\pi(X)=t\mu(X)+(1-t)\nu(X)=1$.
+	\end{proof}
+
+	Let $\M_T\subset \M$ denote the set of all $T$-invariant Borel probability measures on $X$.
+	\begin{proposition}{}{}
+		Ergodic $T$-invariant measure are precisely the extreme points of $\M_T$
+	\end{proposition}
+	\begin{proof}
+		If $\mu$ is not ergodic, then there is a $T$-invariant measurable subset $A\subset X$ with $0<\mu(A)<1$. Let $\mu_A(B)=\mu(B\cap A)/\mu(A)$ and $\mu_{X-A}(B)=\mu(B\cap(X-A))/\mu(X-A)$ for any measurable set $B$. We first check that both $\mu_A$ and $\mu_{X-A}$ are $T$-invariant measure. By definition, it suffices to prove $\mu(T^{-1}(B)\cap A)=\mu(B\cap A)$ and $\mu(T^{-1}(B)\cap (X-A))=\mu(B\cap (X-A))$. For the former, we have
+		$$
+		\mu(T^{-1}(B)\cap A)=\mu(T^{-1}(B)\cap T^{-1}(A))=\mu(T^{-1}(A\cap B))=\mu(A\cap B).
+		$$
+		For the latter, just note that if $A$ is $T$-invariant, then $X-A$ is also $T$-invariant and the proof is the same. Indeed, we have the fact that $T^{-1}(A)=A$, which shows if $Tx\in A$, then $x\in A$ and if $x\in A$ then $Tx\in A$. Therefore, if $x\in T^{-1}(X-A)$, then $Tx\notin A$, so $x\notin A$, $x\in X-A$. Conversely, if $x\in X-A$, $x\notin A$, then $Tx\notin A$, $Tx\in X-A$.
+	\end{proof}
+
+	\begin{proposition}{}{}
+		Let $X$ and $Y$ be compact metric spaces and $T:X\to Y$ a continuous map. Then $T$ induces a natural map $\M(X)\to \M(Y)$, and that this map is continuous in the weak* topology.
+	\end{proposition}
+	\begin{proof}
+		The natural map induced by $T$ is $\pi_T: \mu\mapsto \mu\circ T^{-1}$. That is $\pi_T(\mu)(A)=\mu(T^{-1}(A))$. And we simply denote the induced measure by $\nu$. If $\int f d\mu_n\to\int f d\mu$ for any $f$ as $n\to\infty$, then for any simple function, $\one_A$,
+		\begin{align*}
+			&\int \one_A d\nu_n=\int \one_A d\mu_n(T^{-1})=\mu_n(T^{-1}(A))=\int \one_{T^{-1}(A)}d\mu\\
+			&\to \int \one_{T^{-1}(A)}d\mu=\mu(T^{-1}(A))=\int \one_A d\mu(T^{-1})=\int \one_A d\nu\quad (n\to\infty).
+		\end{align*}
+		Since this is true for simple function, it is true for any continuous function, i.e. the map is continuous.
+	\end{proof}
+
+
+
+
+
+
+
+
+
 	\bibliographystyle{alpha}
 	\bibliography{basic_concept}
 \end{document}
